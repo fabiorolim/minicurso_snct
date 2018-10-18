@@ -1,0 +1,44 @@
+{% extends "template.html"%}
+{% block conteudo %}
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Contatos</div>
+    <div class="card-body">
+        {% if not contatos %}
+            <h3>Nenhum contato encontrado!</h3>
+        {% else %}
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Celular</th>
+                        <th>E-mail</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contato in contatos %}
+                    <tr>
+                        <td>{{ contato[0] }}</td>
+                        <td>{{ contato[1] }}</td>
+                        <td>{{ contato[2] }}</td>
+                        <td>{{ contato[3] }}</td>
+                        <td>{{ contato[4] }}</td>
+                        <td>
+                            <a href="{{ url_for('alterar', id=contato[0]) }}">Alterar</a>
+                            - <a href="{{ url_for('excluir', id=contato[0]) }}">Excluir</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

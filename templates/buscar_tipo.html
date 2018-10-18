@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+{% block conteudo %}
+      <form action="/buscando_tipo" method="POST">
+        <fieldset>
+          <div class="form-group">
+            <label for="console">Tipo:</label>
+            <select class="form-control" name="tipo">
+                <option value="amigos">Amigos</option>
+                <option value="familia">Família</option>
+                <option value="profissional">Profissional</option>
+                <option value="outros">Outros</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary fas fa-search">Buscar</button>
+        </fieldset>
+      </form>
+{% endblock %}
