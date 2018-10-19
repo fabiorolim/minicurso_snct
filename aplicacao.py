@@ -8,7 +8,7 @@ DATABASE = 'agenda.db'
 
 @app.route('/')
 def index():
-    return render_template('inicio.html', titulo = 'Contatos')
+    return redirect('/listar')
 
 
 @app.route('/novo')
@@ -37,7 +37,7 @@ def listar():
     sql = "SELECT * FROM contatos"
     cursor.execute(sql)
     contatos = cursor.fetchall()
-    return render_template('listar.html', contatos = contatos, titulo = 'Contatos')
+    return render_template('listar.html', contatos = contatos, titulo = 'Todos os Contatos')
 
 
 @app.route('/excluir<int:id>')
@@ -105,5 +105,6 @@ def buscando_tipo():
     cursor.execute(sql)
     contatos = cursor.fetchall()
     return render_template('listar.html', contatos = contatos, titulo = 'Contatos por Tipo')
+
 
 app.run(debug=True)
